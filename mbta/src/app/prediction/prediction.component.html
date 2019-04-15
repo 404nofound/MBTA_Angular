@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Stop Choice</h1>
+</div>
+
+<div class="form-group">
+      <h5>Nearby Stop:</h5>
+      <select class="form-control" onmousedown="this.value=''" (change)="getChangeNearby($event.target.value)" required>
+        <option *ngFor="let stop of nearby" value = "{{stop.id}}">{{stop.name}}</option>
+      </select>
+</div>
+
+<hr />
+
+<div class="form-group">
+      <h5>Train Line:</h5>
+      <select class="form-control" (change)="getChangeTrain($event.target.value)" required>
+        <option [value] = "'red'">Red Line</option>
+        <option [value] = "'mattapan'">Mattapan Line</option>
+        <option [value] = "'orange'">Orange Line</option>
+        <option [value] = "'greenb'">Green Line B</option>
+        <option [value] = "'greenc'">Green Line C</option>
+        <option [value] = "'greend'">Green Line D</option>
+        <option [value] = "'greene'">Green Line E</option>
+        <option [value] = "'blue'">Blue Line</option>
+      </select>
+</div>
+
+<div class="form-group">
+      <h5>Train Stop:</h5>
+      <select class="form-control" onmousedown="this.value=''" (change)="getChange($event.target.value)" required>
+        <option *ngFor="let stop of stop" value = "{{stop.id}}">{{stop.name}}</option>
+
+      </select>
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Time Prediction</h1>
+</div>
+
+<div class="accordion" id="accordionExample">
+  <div class="card" *ngFor="let train of prediction">
+    <div class="card-header" attr.id="heading{{train.id}}">
+      <h5 class="mb-0">
+        <img style="height: 40px;width: 40px;" src="./assets/{{train.icon}}.svg">
+        <button style="padding-left:20px" class="btn btn-link collapsed" type="button" data-toggle="collapse" attr.data-target="#collapse{{train.id}}" aria-expanded="true" attr.aria-controls="collapse{{train.id}}">
+          {{train.name}}
+        </button>
+        <button  class="btn btn-link collapsed" type="button" data-toggle="collapse" attr.data-target="#collapse{{train.id}}" aria-expanded="true" attr.aria-controls="collapse{{train.id}}">
+          {{train.info}}
+        </button>
+        <button style="float:right" class="btn btn-link collapsed" type="button" data-toggle="collapse" attr.data-target="#collapse{{train.id}}" aria-expanded="true" attr.aria-controls="collapse{{train.id}}">
+            {{train.direction}}
+        </button>
+      </h5>
+    </div>
+
+    <div attr.id="collapse{{train.id}}" class="collapse" attr.aria-labelledby="heading{{train.id}}" data-parent="#accordionExample">
+      <div class="card-body">
+        {{train.arr}}
+
+        <hr />
+
+        {{train.dep}}
+      </div>
+    </div>
+  </div>
+</div>

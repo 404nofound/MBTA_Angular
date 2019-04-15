@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Train Alerts</h1>
+</div>
+
+<div class="card-deck mb-4" *ngFor="let alert of alertList">
+  <div class="card">
+    <div class="card-header">{{alert.cause}}  -  {{alert.effect}}</div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{alert.info}}</h5>
+      <hr />
+      <p class="card-text">{{alert.desc}}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated {{alert.update}}</small>
+    </div>
+  </div>
+</div>

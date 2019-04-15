@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">My Location</h1>
+</div>
+
+<a (click)="click()" class="list-group-item list-group-item-action">
+    {{latitude}}, {{longitude}}
+</a>
+
+<hr />
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Nearby Stops</h1>
+</div>
+
+<ul class="list-group">
+  <a (click)="clickStop(stop.latitude, stop.longitude)" *ngFor="let stop of stopList" class="list-group-item list-group-item-action">
+      {{stop.name}}
+  </a>
+</ul>
+
+<hr />
+
+<agm-map style="height: 400px" [zoom]="zoom" [latitude]="stoplat" [longitude]="stoplog">
+    <agm-marker [latitude]="stoplat" [longitude]="stoplog"></agm-marker>
+</agm-map>

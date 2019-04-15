@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Train Stops</h1>
+</div>
+
+<div class="form-group">
+      <label >Please select one train:</label>
+      <select class="form-control" onmousedown="this.value=''" (change)="getChange($event.target.value)" required>
+        <option [value] = "'red'" selected>Red Line</option>
+        <option [value] = "'mattapan'">Mattapan Line</option>
+        <option [value] = "'orange'">Orange Line</option>
+        <option [value] = "'greenb'">Green Line B</option>
+        <option [value] = "'greenc'">Green Line C</option>
+        <option [value] = "'greend'">Green Line D</option>
+        <option [value] = "'greene'">Green Line E</option>
+        <option [value] = "'blue'">Blue Line</option>
+      </select>
+</div>
+
+<div class="accordion" id="accordionExample">
+  <div class="card" *ngFor="let stop of stopList">
+    <div class="card-header" attr.id="heading{{stop.id}}">
+      <h5 class="mb-0">
+        <img style="height: 40px;width: 40px;" src="./assets/{{name}}.svg">
+        <button style="padding-left:20px" class="btn btn-link collapsed" type="button" data-toggle="collapse" attr.data-target="#collapse{{stop.id}}" aria-expanded="true" attr.aria-controls="collapse{{stop.id}}">
+          {{stop.name}}
+        </button>
+        <img align='right' style="height: 40px;width: 40px;" src="./assets/{{stop.wheel}}.svg">
+      </h5>
+    </div>
+
+    <div attr.id="collapse{{stop.id}}" class="collapse" attr.aria-labelledby="heading{{stop.id}}" data-parent="#accordionExample">
+      <div class="card-body">
+        {{stop.address}}
+
+        <hr />
+        <label>Shown on the map:</label>
+
+        <agm-map style="height: 300px" [zoom]="15" [latitude]="stop.lat" [longitude]="stop.log">
+            <agm-marker [latitude]="stop.lat" [longitude]="stop.log"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</div>
