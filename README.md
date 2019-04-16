@@ -1,8 +1,8 @@
 # MBTA_Angular
 
-Boston Train Application Based on Angular
+Boston Train Application Based on Angular.
 
-If you want to see details, please using Chrome open [Here](https://www.yichangshao.com/mbta/)
+If you want to see details, please using Chrome open [Here](https://www.yichangshao.com/mbta/).
 
 # Nearby Stop
 
